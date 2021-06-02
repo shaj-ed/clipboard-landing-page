@@ -1,0 +1,79 @@
+@use 'variables' as *;
+@use 'mixins' as m;
+
+.footer {
+  padding: 4.5rem 3rem 4.5rem 3rem;
+  background-color: lighten($grayish-blue, 30.5%);
+  text-align: center;
+
+  @include m.responsive-size-up(small) {
+    text-align: left;
+  }
+
+  &--inner {
+    max-width: 112rem;
+    margin: 0 auto;
+
+    @include m.responsive-size-up(small) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 5rem;
+    }
+
+    @include m.responsive-size-up(large) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  &__logo {
+    display: inline-block;
+    @include m.logo(4.5rem);
+    margin-bottom: 4rem;
+
+    @include m.responsive-size-up(medium) {
+      @include m.logo(5.5rem);
+      margin-bottom: 0;
+    }
+  }
+
+  &__nav:last-child {
+    margin-top: 4rem;
+    display: flex;
+    gap: 2.5rem;
+    justify-content: center;
+    align-items: center;
+
+    @include m.responsive-size-up(small) {
+      margin-top: 0;
+      align-items: flex-start;
+    }
+  }
+
+  &__nav-link {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: $fw-semi-bold;
+    color: $dark-grayish-blue;
+    margin-bottom: 2rem;
+
+    @include m.responsive-size-up(large) {
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    &:hover {
+      color: lighten($dark-grayish-blue, 25%);
+    }
+
+    &--social {
+      svg {
+        fill: $svg-fill;
+
+        &:hover {
+          fill: $grayish-blue;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+@use 'variables' as *;
+
+// Breakpont for responsive design
+$breakpoints: (
+  "small": 36rem,
+  "medium": 48rem,
+  "large": 62rem,
+  "xlarge": 75rem,
+  "xxlarge": 87.5rem,
+);
+
+@mixin responsive-size-up($size) {
+  $breakpoint-size: map-get($breakpoints, $size);
+
+  @media (min-width: $breakpoint-size) {
+    @content;
+  }
+}
+
+@mixin responsive-size-down($size) {
+  $breakpoint-size: map-get($breakpoints, $size);
+
+  @media (max-width: $breakpoint-size) {
+    @content;
+  }
+}
+
+// Logo
+@mixin logo($size) {
+  width: $size;
+  height: $size;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+// Buttons //
+@mixin setup-button($color) {
+  padding: 1.6rem 4rem;
+  border: none;
+  outline: none;
+  background-color: $color;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1.8rem;
+  font-weight: $fw-regular;
+  border-radius: 4rem;
+  cursor: pointer;
+  box-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    box-shadow: 0.5rem 1rem 1.5rem rgba(0, 0, 0, 0.2);
+    background-color: lighten($color, 4%);
+  }
+
+  @include responsive-size-down(small) {
+    width: 100%;
+  }
+}
+
+@mixin final-button() {
+  &--cyan {
+    @include setup-button($strong-cyan);
+  }
+
+  &--bluish {
+    @include setup-button($light-blue);
+
+    @include responsive-size-down(small) {
+      margin-top: 2rem;
+    }
+
+    @include responsive-size-up(small) {
+      margin-left: 2rem;
+    }
+  }
+}

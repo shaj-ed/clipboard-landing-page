@@ -1,0 +1,30 @@
+@use 'mixins' as m;
+
+.company-logo {
+  width: 100%;
+  max-width: 112rem;
+  margin: 10rem auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  justify-content: space-between;
+
+  @include m.responsive-size-up(small) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  @include m.responsive-size-up(medium) {
+    margin-top: 17rem;
+  }
+
+  @include m.responsive-size-up(large) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  a {
+    display: block;
+  }
+}

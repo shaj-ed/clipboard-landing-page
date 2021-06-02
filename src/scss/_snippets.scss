@@ -1,0 +1,56 @@
+@use 'variables' as *;
+@use 'mixins' as m;
+
+.snippets {
+  padding-top: 13rem;
+
+  @include m.responsive-size-up(medium) {
+    padding-left: 0;
+    padding-right: 1.5rem;
+  }
+
+  &__content {
+    margin-top: 5.2rem;
+    text-align: center;
+
+    @include m.responsive-size-up(medium) {
+      margin-top: 8rem;
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      text-align: left;
+    }
+
+    @include m.responsive-size-up(large) {
+      gap: 10rem;
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  &__image {
+    margin-bottom: 4.5rem;
+    @include m.responsive-size-up(medium) {
+      margin-bottom: 0;
+      margin-left: -3rem;
+    }
+  }
+
+  // Main features
+  .feature {
+    &__description {
+      max-width: 34rem;
+      margin: 1.5rem auto 0 auto;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 4.5rem;
+
+      @include m.responsive-size-up(medium) {
+        margin-bottom: 6rem;
+      }
+    }
+  }
+}

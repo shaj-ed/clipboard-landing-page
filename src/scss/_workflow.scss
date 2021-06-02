@@ -1,0 +1,41 @@
+@use 'variables' as *;
+@use 'mixins' as m;
+
+.workflow {
+  padding-top: 9rem;
+  text-align: center;
+
+  &__content {
+    max-width: 110rem;
+    margin: 7rem auto 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 4.5rem;
+
+    @include m.responsive-size-up(small) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include m.responsive-size-up(medium) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .info {
+      @include m.responsive-size-up(large) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+
+      &__headline {
+        margin-top: 3.5rem;
+        margin-bottom: 1.8rem;
+      }
+
+      &__image {
+        width: 4rem;
+        height: 4rem;
+        object-fit: contain;
+      }
+    }
+  }
+}
